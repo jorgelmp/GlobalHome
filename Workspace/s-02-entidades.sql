@@ -20,6 +20,7 @@ nocycle
 ;
 
 create sequence seq_historico_status_vivienda
+start with 1
 increment by 1
 nomaxvalue
 nominvalue
@@ -27,6 +28,7 @@ nocycle
 ;
 
 create sequence seq_tarjeta_credito
+start with 1
 increment by 1
 nomaxvalue
 nominvalue
@@ -41,7 +43,7 @@ create table usuario(
   ap_paterno      varchar2(30)   not null,
   ap_materno      varchar2(30)   null,
   constrasenia    varchar2(15)   not null,
-  constraint usuario_pk              primary key(usuari_id),
+  constraint usuario_pk              primary key(usuario_id),
   constraint usuario_email_uk        unique(email),
   constraint usuario_contrasenia_chk check (length(constrasenia) >= 8)
 )
@@ -62,7 +64,7 @@ create table vivienda(
   direccion           varchar2(50)   not null,
   latitud             varchar2(8)    not null,-- 68.131° N
   longitud            varchar2(8)    not null,
-  ubicacion           generated always as (latitud||,||longitud) virtual, --REVISAR
+  ubicacion           generated always as (latitud||','||longitud) virtual, --REVISAR
   capacidad_max       number(3,0)    not null,
   descripcion         varchar2(2000) not null,
   fecha_status        date           not null,
@@ -96,13 +98,27 @@ create table historico_status_vivienda(
 )
 ;
 
-create table servicio(
-  servicio_id number(10,0)  constraint servicio_pk primary key,
-  nombre      varchar2(50)  not null,
-  descripcion varchar2(200) not null,
-  icono       blob   not null
+create table imagen(
+  num_foto     number(2,0)   not null,
+  vivienda_id  number(10,0)  not null,
+  foto         blob          not null,
+  constraint imagen_vivienda_id_fk foreign key(vivienda_id)
+  references vivienda(vivienda_id),
+  constraint imagen_pk primary key (num_foto,vivienda_id)
 )
 ;
+
+
+
+create table servicio(
+  servicio_id  number(10,0)  constraint servicio_pk primary key,
+  nombre       varchar2(50)  not null,
+  descripcion  varchar2(200) not null,
+  icono        blob          not null
+)
+;
+
+
 
 
 
