@@ -35,6 +35,7 @@ nominvalue
 nocycle
 ;
 
+prompt Creando tabla USUARIO
 create table usuario(
   usuario_id      number(10,0)   default seq_usuario.nextval,
   email           varchar2(150)  not null,
@@ -49,13 +50,15 @@ create table usuario(
 )
 ;
 
+prompt Creando tabla STATUS_VIVENDA
 create table status_vivienda(
-  status_vivienda_id    number(10,0) constraint status_vivienda_pk primary key
+  status_vivienda_id    number(10,0) constraint status_vivienda_pk primary key,
   clave                 varchar2(4) not null,
   descripcion           varchar2(20) not null
 )
 ;
 
+prompt Creando tabla VIVIENDA
 create table vivienda(
   vivienda_id         number(10,0) default seq_vivienda.nextval,
   es_renta            number(1,0)    not null,
@@ -81,6 +84,7 @@ create table vivienda(
 )
 ;
 
+prompt Creando tabla HISTORICO_STATUS_VIVIENDA
 create table historico_status_vivienda(
   historico_status_vivienda_id  number(10,0) 
   default seq_historico_status_vivienda.nextval,
@@ -98,6 +102,7 @@ create table historico_status_vivienda(
 )
 ;
 
+prompt Creando tabla IMAGEN
 create table imagen(
   num_foto     number(2,0)   not null,
   vivienda_id  number(10,0)  not null,
@@ -108,8 +113,7 @@ create table imagen(
 )
 ;
 
-
-
+prompt Creando tabla SERVICIO
 create table servicio(
   servicio_id  number(10,0)  constraint servicio_pk primary key,
   nombre       varchar2(50)  not null,
