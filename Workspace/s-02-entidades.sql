@@ -80,7 +80,8 @@ create table vivienda(
 ;
 
 create table historico_status_vivienda(
-  historico_status_vivienda_id  number(10,0),
+  historico_status_vivienda_id  number(10,0) 
+  default seq_historico_status_vivienda.nextval,
   fecha_status                  date          not null,
   vivienda_id                   number(10,0)  not null,
   status_vivienda_id            number(10,0)  not null,
