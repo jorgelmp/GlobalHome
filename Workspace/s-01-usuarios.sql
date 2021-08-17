@@ -1,6 +1,6 @@
 --@Autor: Jesús Salazar Domínguez y Jorge Manzanares Peña 
 --@Fecha de creación: 10/08/2021
---@Descripción: creación de usuarios y roles
+--@Descripción: Creación de usuarios y roles
 
 prompt Proporcionar el password del usuario sys;
 
