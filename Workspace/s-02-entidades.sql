@@ -232,7 +232,6 @@ create table tarjeta_credito(
   anio_expiracion      number(4,0)      not null,
   num_seguridad        number(4,0)      not null,
   constraint tarjeta_credito_pk    primary key(tarjeta_credito_id)
-  constraint tarjeta_credito_chk   
 )
 ;
 
