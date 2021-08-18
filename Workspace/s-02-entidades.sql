@@ -2,6 +2,8 @@
 --@Fecha de creación: 10/08/2021
 --@Descripción: Definición de tablas
 
+--NO SE DEFINIERON COMPORTAMIENTOS PARA ELIMINACIÓN DE REFERENCIAS (FK)
+
 prompt Creando secuencias para vivienda, historico, usuario, tarjeta de credito
 create sequence seq_vivienda
 start with 1
@@ -122,7 +124,80 @@ create table servicio(
 )
 ;
 
+prompt Creando tabla VIVIENDA_SERVICIO
+create table vivienda_servicio(
+  vivienda_servicio_id   number(10,0) constraint vivienda_servicio_pk primary key,
+  servicio_id not null constraint vivienda_servicio_servicio_id_fk 
+  references servicio(servicio_id),
+  vivienda_id not null constraint vivienda_servicio_vivienda_id_fk 
+  references vivienda(vivienda_id)
+)
+;
 
+prompt Creando tabla MENSAJE
+create table mensaje(
+  mensaje_id         number(10,0)    constraint mensaje_pk primary key,
+  titulo             varchar2(40)    not null,
+  cuerpo             varchar2(500)   not null,
+  leido              number(1,0)     not null,
+  usuario_id   not null constraint mensaje_usuario_id_fk 
+  references usuario(usuario_id),
+  respuesta_id not null constraint mensaje_respuesta_id_fk
+  references mensaje(mensaje_id),
+  vivienda_id  not null constraint mensaje_vivienda_id_fk 
+  references vivienda(vivienda_id)
+)
+;
+
+prompt Creando tabla VIVIENDA_EN_RENTA
+create table vivienda_en_renta(
+  vivienda_id        number(10,0) constraint vivienda_en_renta_pk primary key,
+  renta_mensual      number(7,0)  not null,
+  dia_deposito       number(2,0)  not null,
+  constraint vivienda_en_renta_vivienda_id_fk foreign key(vivienda_id)
+  references vivienda(vivienda_id)
+)
+;
+
+prompt Creando tabla VIVIENDA_VACACIONES
+create table vivienda_vacaciones(
+  vivienda_id        number(10,0) constraint vivienda_vacaciones_pk primary key,
+  costo_dia          number(5,0)  not null,
+  dias_max           number(3,0)  not null,
+  deposito           number(6,0)  not null
+)
+;
+
+prompt Creando tabla VIVIENDA_EN_VENTA
+create table vivienda_en_venta(
+  vivienda_id        number(10,0) constraint vivienda_en_venta_pk primary key,
+  num_catastral      number(10,0) not null,
+  folio              varchar2(18) not null,
+  avaluo             blob         not null
+)
+;
+
+prompt Creando tabla CLABE_VIVIENDA
+create table clabe_vivienda(
+  clabe_vivienda_id number(10,0) constraint clabe_vivienda_pk primary key,
+  vivienda_id not null constraint clabe_vivienda_vivienda_id_fk 
+  references vivienda(vivienda_id),
+  clabe             number(18,0) not null
+)
+;
+
+prompt Creando tabla CONTRATO
+create table contrato(
+  contrato_id       number(10,0)  constraint contrato_pk primary key,
+  folio             varchar2(8)   not null,
+  fecha             date          not null,
+  documento         blob          not null,
+  vivienda_id not null constraint contrato_vivienda_id_fk 
+  references vivienda(vivienda_id),
+  usuario_id  not null constraint contrato_usuario_id_fk
+  references usuario(usuario_id)
+)
+;
 
 
 
