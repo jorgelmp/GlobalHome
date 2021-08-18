@@ -173,6 +173,14 @@ values (seq_vivienda.nextval, 1, 0, 0,
 
 Prompt 10
 insert into historico_status_vivienda (historico_status_vivienda_id,
+  fecha_status, vivienda_id, status_vivienda_id)
+values (seq_historico_status_vivienda.nextval, to_date('10/06/2021', 'dd/mm/yyyy'),
+  seq_vivienda.currval, 1
+)
+;
+
+Prompt 10.1
+insert into historico_status_vivienda (historico_status_vivienda_id,
   vivienda_id, status_vivienda_id)
 values (seq_historico_status_vivienda.nextval, seq_vivienda.currval, 2
 )
@@ -266,7 +274,7 @@ values(seq_contrato.nextval, '9807165B', empty_blob(), seq_vivienda.currval, 2
 Prompt 24
 insert into vivienda (vivienda_id, es_renta, es_vacional, es_venta, direccion,
   latitud, longitud, capacidad_max, descripcion, status_vivienda_id, usuario_id)
-values (seq_vivienda.nextval, 0, 1, 0,
+values (seq_vivienda.nextval, 0, 0, 1,
   'Andador Bugambilias #12, Col. Morelos, Puebla, México', '21.509°N',
     '105.982°W', 3, 'Casa humilde amueblada, ideal para un familia recién 
     formada o pareja sin compromiso. Servicios básicos.', 4, 3
@@ -274,6 +282,14 @@ values (seq_vivienda.nextval, 0, 1, 0,
 ;
 
 Prompt 25
+insert into historico_status_vivienda (historico_status_vivienda_id, 
+  fecha_status, vivienda_id, status_vivienda_id)
+values (seq_historico_status_vivienda.nextval, to_date('15/05/2021', 'dd/mm/yyyy'),
+  seq_vivienda.currval, 1
+)
+;
+
+Prompt 25.1
 insert into historico_status_vivienda (historico_status_vivienda_id,
   vivienda_id, status_vivienda_id)
 values (seq_historico_status_vivienda.nextval, seq_vivienda.currval, 4
@@ -370,5 +386,95 @@ values (seq_mensualidad.nextval, 50000, empty_blob(), seq_venta_usuario.currval
 )
 ;
 
-commit;
+-- Segunda carga
+
+
+Prompt 38
+insert into vivienda (vivienda_id, es_renta, es_vacional, es_venta, direccion,
+  latitud, longitud, capacidad_max, descripcion, status_vivienda_id, usuario_id)
+values (seq_vivienda.nextval, 0, 1, 0,
+  'Calle Miguel Hidalgo #53, Col. Centro, Veracruz, México', '21.555°N',
+    '102.333°W', 4, 'Casa de dos plantas con tres habitaciones y dos baños.
+    Hermoso jadín trasero donde abundan los insectos y las aves. Terraza 
+    ambientada para hacer reuniones con familia y amigos. Asador incluído.',
+    3, 5
+)
+;
+
+Prompt 39
+insert into historico_status_vivienda (historico_status_vivienda_id,
+  fecha_status, vivienda_id, status_vivienda_id)
+values (seq_historico_status_vivienda.nextval, to_date('22/01/2021', 'dd/mm/yyyy'),
+  seq_vivienda.currval, 1
+)
+;
+
+Prompt 40
+insert into historico_status_vivienda (historico_status_vivienda_id,
+  vivienda_id, status_vivienda_id)
+values (seq_historico_status_vivienda.nextval, seq_vivienda.currval, 3
+)
+;
+
+Prompt 41
+insert into imagen (num_foto, vivienda_id, foto)
+values (1, seq_vivienda.currval, empty_blob()
+)
+;
+
+Prompt 42
+insert into imagen (num_foto, vivienda_id, foto)
+values (2, seq_vivienda.currval, empty_blob()
+)
+;
+
+Prompt 43
+insert into imagen (num_foto, vivienda_id, foto)
+values (3, seq_vivienda.currval, empty_blob()
+)
+;
+
+Prompt 44
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 1,
+  seq_vivienda.currval
+)
+;
+
+Prompt 45
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 2,
+  seq_vivienda.currval
+)
+;
+
+Prompt 46
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 3,
+  seq_vivienda.currval
+)
+;
+
+Prompt 47
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 4,
+  seq_vivienda.currval
+)
+;
+
+Prompt 48
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 5,
+  seq_vivienda.currval
+)
+;
+
+Prompt 49
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 6,
+  seq_vivienda.currval
+)
+;
+
+
 
