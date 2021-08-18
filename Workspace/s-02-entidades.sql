@@ -142,7 +142,7 @@ create table mensaje(
   leido              number(1,0)     not null,
   usuario_id   not null constraint mensaje_usuario_id_fk 
   references usuario(usuario_id),
-  respuesta_id not null constraint mensaje_respuesta_id_fk
+  respuesta_id     null constraint mensaje_respuesta_id_fk
   references mensaje(mensaje_id),
   vivienda_id  not null constraint mensaje_vivienda_id_fk 
   references vivienda(vivienda_id)
@@ -155,7 +155,9 @@ create table vivienda_en_renta(
   renta_mensual      number(7,0)  not null,
   dia_deposito       number(2,0)  not null,
   constraint vivienda_en_renta_vivienda_id_fk foreign key(vivienda_id)
-  references vivienda(vivienda_id)
+  references vivienda(vivienda_id),
+  constraint vivienda_en_renta_dia_deposito_chk
+  check (dia_deposito between(0,31))
 )
 ;
 
@@ -229,7 +231,8 @@ create table tarjeta_credito(
   mes_expiracion       number(2,0)      not null,
   anio_expiracion      number(4,0)      not null,
   num_seguridad        number(4,0)      not null,
-  constraint tarjeta_credito_pk primary key(tarjeta_credito_id)
+  constraint tarjeta_credito_pk    primary key(tarjeta_credito_id)
+  constraint tarjeta_credito_chk   
 )
 ;
 
@@ -270,7 +273,9 @@ create table vacacional_calificacion(
   vivienda_id not null constraint vacacional_calificacion_vivienda_id_fk 
   references vivienda(vivienda_id),
   usuario_id  not null constraint vacacional_calificacion_usuario_id_fk
-  references usuario(usuario_id)
+  references usuario(usuario_id),
+  constraint vacacional_calificacion_chk 
+  check(calificacion<=5 and calificacion>=0)
 )
 ;
 
