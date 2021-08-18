@@ -56,7 +56,7 @@ create table vivienda(
 prompt Creando tabla HISTORICO_STATUS_VIVIENDA
 create table historico_status_vivienda(
   historico_status_vivienda_id  number(10,0)  not null,
-  fecha_status                  date          not null,
+  fecha_status                  date          default sysdate,
   vivienda_id                   number(10,0)  not null,
   status_vivienda_id            number(10,0)  not null,
   constraint historico_status_vivienda_pk 
@@ -159,7 +159,7 @@ prompt Creando tabla CONTRATO
 create table contrato(
   contrato_id       number(10,0)  constraint contrato_pk primary key,
   folio             varchar2(8)   not null,
-  fecha             date          not null,
+  fecha             date          default sysdate,
   documento         blob          not null,
   vivienda_id not null constraint contrato_vivienda_id_fk 
   references vivienda(vivienda_id),
@@ -183,7 +183,7 @@ create table venta_usuario(
 prompt Creando tabla MENSUALIDAD
 create table mensualidad(
   mensualidad_id    number(10,0)   constraint mensualidad_pk primary key,
-  fecha_pago        date           not null,
+  fecha_pago        date           default sysdate,
   importe           number(10,0)   not null,
   archivo           blob           not null,
   venta_usuario_id  not null constraint mensualidad_venta_usuario_id_fk
@@ -235,7 +235,7 @@ create table vacacional_calificacion(
   constraint vacacional_calificacion_pk primary key,
   calificacion number(1,0)     not null,
   descripcion  varchar2(1000)  not null,
-  fecha        date            not null,
+  fecha        date            default sysdate,
   vivienda_id not null constraint vacacional_calificacion_vivienda_id_fk 
   references vivienda(vivienda_id),
   usuario_id  not null constraint vacacional_calificacion_usuario_id_fk
