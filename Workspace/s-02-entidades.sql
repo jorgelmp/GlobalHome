@@ -29,7 +29,7 @@ create table status_vivienda(
 
 prompt Creando tabla VIVIENDA
 create table vivienda(
-  vivienda_id         number(10,0) default seq_vivienda.nextval,
+  vivienda_id         number(10,0)   default seq_vivienda.nextval,
   es_renta            number(1,0)    not null,
   es_venta            number(1,0)    not null,
   es_vacional         number(1,0)    not null,
