@@ -4,39 +4,6 @@
 
 --NO SE DEFINIERON COMPORTAMIENTOS PARA ELIMINACIÓN DE REFERENCIAS (FK)
 
-prompt Creando secuencias para vivienda, historico, usuario, tarjeta de credito
-create sequence seq_vivienda
-start with 1
-increment by 1
-nomaxvalue 
-nominvalue
-nocycle
-;
-
-create sequence seq_usuario
-start with 1
-increment by 1
-nomaxvalue
-nominvalue
-nocycle
-;
-
-create sequence seq_historico_status_vivienda
-start with 1
-increment by 1
-nomaxvalue
-nominvalue
-nocycle
-;
-
-create sequence seq_tarjeta_credito
-start with 1
-increment by 1
-nomaxvalue
-nominvalue
-nocycle
-;
-
 prompt Creando tabla USUARIO
 create table usuario(
   usuario_id      number(10,0)   default seq_usuario.nextval,
@@ -161,9 +128,9 @@ create table vivienda_en_renta(
 )
 ;
 
-prompt Creando tabla VIVIENDA_VACACIONES
-create table vivienda_vacaciones(
-  vivienda_id        number(10,0) constraint vivienda_vacaciones_pk primary key,
+prompt Creando tabla VIVIENDA_VACACIONAL
+create table vivienda_vacacional(
+  vivienda_id        number(10,0) constraint vivienda_vacacional_pk primary key,
   costo_dia          number(5,0)  not null,
   dias_max           number(3,0)  not null,
   deposito           number(6,0)  not null
@@ -249,15 +216,15 @@ create table alquiler(
 )
 ;
 
-prompt Creando tabla VACACIONAL_NOTIFICACIONES
-create table vacacional_notificaciones(
-  vacacional_notificaciones_id  number(10,0) 
-  constraint vacacional_notificaciones_pk primary key,
+prompt Creando tabla VACACIONAL_NOTIFICACION
+create table vacacional_notificacion(
+  vacacional_notificacion_id  number(10,0) 
+  constraint vacacional_notificacion_pk primary key,
   num_celular number(10,0)            not null,
   notificacion_enviada number(10,0)   not null,
-  vivienda_id not null constraint vacacional_notificaciones_vivienda_id_fk 
+  vivienda_id not null constraint vacacional_notificacion_vivienda_id_fk 
   references vivienda(vivienda_id),
-  usuario_id  not null constraint vacacional_notificaciones_usuario_id_fk
+  usuario_id  not null constraint vacacional_notificacion_usuario_id_fk
   references usuario(usuario_id)
 )
 ;
