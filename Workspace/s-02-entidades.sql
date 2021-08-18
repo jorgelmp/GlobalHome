@@ -93,7 +93,8 @@ create table servicio(
 
 prompt Creando tabla VIVIENDA_SERVICIO
 create table vivienda_servicio(
-  vivienda_servicio_id   number(10,0) constraint vivienda_servicio_pk primary key,
+  vivienda_servicio_id   number(10,0) 
+  constraint vivienda_servicio_pk primary key,
   servicio_id not null constraint vivienda_servicio_servicio_id_fk 
   references servicio(servicio_id),
   vivienda_id not null constraint vivienda_servicio_vivienda_id_fk 
