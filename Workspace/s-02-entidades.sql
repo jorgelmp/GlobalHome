@@ -157,7 +157,7 @@ create table vivienda_en_renta(
   constraint vivienda_en_renta_vivienda_id_fk foreign key(vivienda_id)
   references vivienda(vivienda_id),
   constraint vivienda_en_renta_dia_deposito_chk
-  check (dia_deposito between(0,31))
+  check (dia_deposito between 0 and 31)
 )
 ;
 
