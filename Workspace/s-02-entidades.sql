@@ -199,5 +199,78 @@ create table contrato(
 )
 ;
 
+prompt Creando tabla VENTA_USUARIO
+create table venta_usuario(
+  venta_usuario_id   number(10,0)   constraint venta_usuario_pk primary key,
+  comision           number(8,0)    not null,
+  clabe              number(18,0)   not null,
+  vivienda_id not null constraint venta_usuario_vivienda_id_fk 
+  references vivienda(vivienda_id),
+  usuario_id  not null constraint venta_usuario_usuario_id_fk
+  references usuario(usuario_id)
+)
+;
 
+prompt Creando tabla MENSUALIDAD
+create table mensualidad(
+  mensualidad_id    number(10,0)   constraint mensualidad_pk primary key,
+  fecha_pago        date           not null,
+  importe           number(10,0)   not null,
+  archivo           blob           not null,
+  venta_usuario_id  not null constraint mensualidad_venta_usuario_id_fk
+  references venta_usuario(venta_usuario_id)
+)
+;
+
+prompt Creando tabla TARJETA_CREDITO
+create table tarjeta_credito(
+  tarjeta_credito_id   number(10,0)     default seq_tarjeta_credito.nextval,
+  num_tarjeta          number(16,0)     not null,
+  mes_expiracion       number(2,0)      not null,
+  anio_expiracion      number(4,0)      not null,
+  num_seguridad        number(4,0)      not null,
+  constraint tarjeta_credito_pk primary key(tarjeta_credito_id)
+)
+;
+
+prompt Creando tabla ALQUILER
+create table alquiler(
+  alquiler_id         number(10,0)  constraint alquiler_pk primary key,
+  folio               varchar2(8)   not null,
+  periodo             number(3,0)   not null,
+  vivienda_id not null constraint alquiler_vivienda_id_fk 
+  references vivienda(vivienda_id),
+  usuario_id  not null constraint alquiler_usuario_id_fk
+  references usuario(usuario_id),
+  tarjeta_credito_id not null constraint alquiler_tarjeta_credito_id_fk
+  references tarjeta_credito(tarjeta_credito_id)
+)
+;
+
+prompt Creando tabla VACACIONAL_NOTIFICACIONES
+create table vacacional_notificaciones(
+  vacacional_notificaciones_id  number(10,0) 
+  constraint vacacional_notificaciones_pk primary key,
+  num_celular number(10,0)            not null,
+  notificacion_enviada number(10,0)   not null,
+  vivienda_id not null constraint vacacional_notificaciones_vivienda_id_fk 
+  references vivienda(vivienda_id),
+  usuario_id  not null constraint vacacional_notificaciones_usuario_id_fk
+  references usuario(usuario_id)
+)
+;
+
+prompt Creando tabla VACACIONAL_CALIFICACION
+create table vacacional_calificacion(
+  vacacional_calificacion_id   number(10,0)
+  constraint vacacional_calificacion_pk primary key,
+  calificacion number(1,0)     not null,
+  descripcion  varchar2(1000)  not null,
+  fecha        date            not null,
+  vivienda_id not null constraint vacacional_calificacion_vivienda_id_fk 
+  references vivienda(vivienda_id),
+  usuario_id  not null constraint vacacional_calificacion_usuario_id_fk
+  references usuario(usuario_id)
+)
+;
 
