@@ -2,6 +2,10 @@
 --@Fecha de creación: 10/08/2021
 --@Descripción: Definición de tabla externa
 
+--DEFINIR EXT_DIR COMO '/tmp/externa' EN UN SCRIPT DE CONTROL,
+--EJECURAR '!mkdir /tmp/externa' EN EL SCRIPT DE CONTROL.
+--COPIAR 'cp externa/vivienda_vacacional_ext.sql /tmp/externa'
+
 create table vivienda_vacacional_ext(
   vivienda_id      number(10,0),
   latitud          number(6,3),
@@ -15,8 +19,8 @@ organization external (
   default directory ext_dir
   access parameters (
     records delimited by newline
-    badfile tmp_dir:'vivienda_vacacional_ext_bad.log'
-    logfile tmp_dir:'vivienda_vacacional_ext.log'
+    badfile ext_dir:'vivienda_vacacional_ext_bad.log'
+    logfile ext_dir:'vivienda_vacacional_ext.log'
     fields terminated by ','
     lrtrim
     missing field values are null
