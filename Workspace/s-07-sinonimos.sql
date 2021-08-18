@@ -33,10 +33,10 @@ connect ms_proy_invitado /proyecto
 
 Prompt Creando índices privados para invitado
 
-create or replace private synonym venta for ms_proy_admin.vivienda_en_venta;
+create or replace synonym venta for ms_proy_admin.vivienda_en_venta;
 
-create or replace private synonym renta for ms_proy_admin.vivienda_en_renta;
+create or replace synonym renta for ms_proy_admin.vivienda_en_renta;
 
-create or replace private synonym vacacional for ms_proy_admin.vivienda_vacacional;
+create or replace synonym vacacional for ms_proy_admin.vivienda_vacacional;
 
 connect ms_proy_admin /proyecto

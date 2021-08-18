@@ -6,16 +6,16 @@
 
 prompt Creando tabla USUARIO
 create table usuario(
-  usuario_id      number(10,0)   default seq_usuario.nextval,
+  usuario_id      number(10,0)   not null,
   email           varchar2(150)  not null,
   nombre_usuario  varchar2(10)   not null,
   nombre          varchar2(30)   not null,
   ap_paterno      varchar2(30)   not null,
   ap_materno      varchar2(30)   null,
-  constrasenia    varchar2(15)   not null,
+  contrasenia    varchar2(15)   not null,
   constraint usuario_pk              primary key(usuario_id),
   constraint usuario_email_uk        unique(email),
-  constraint usuario_contrasenia_chk check (length(constrasenia) >= 8)
+  constraint usuario_contrasenia_chk check (length(contrasenia) >= 8)
 )
 ;
 
@@ -23,23 +23,23 @@ prompt Creando tabla STATUS_VIVENDA
 create table status_vivienda(
   status_vivienda_id    number(10,0) constraint status_vivienda_pk primary key,
   clave                 varchar2(4) not null,
-  descripcion           varchar2(20) not null
+  descripcion           varchar2(100) not null
 )
 ;
 
 prompt Creando tabla VIVIENDA
 create table vivienda(
-  vivienda_id         number(10,0)   default seq_vivienda.nextval,
+  vivienda_id         number(10,0)   not null,
   es_renta            number(1,0)    not null,
   es_venta            number(1,0)    not null,
   es_vacional         number(1,0)    not null,
-  direccion           varchar2(50)   not null,
-  latitud             varchar2(8)    not null,-- 68.131° N
-  longitud            varchar2(8)    not null,
+  direccion           varchar2(80)   not null,
+  latitud             varchar2(10)    not null,-- 68.131° N
+  longitud            varchar2(10)    not null,
   ubicacion           generated always as (latitud||','||longitud) virtual, --REVISAR
   capacidad_max       number(3,0)    not null,
   descripcion         varchar2(2000) not null,
-  fecha_status        date           not null,
+  fecha_status        date           default sysdate,
   status_vivienda_id  number(10,0)   not null,
   usuario_id          number(10,0)   not null,
   constraint vivienda_pk                    primary key(vivienda_id),       
@@ -55,8 +55,7 @@ create table vivienda(
 
 prompt Creando tabla HISTORICO_STATUS_VIVIENDA
 create table historico_status_vivienda(
-  historico_status_vivienda_id  number(10,0) 
-  default seq_historico_status_vivienda.nextval,
+  historico_status_vivienda_id  number(10,0)  not null,
   fecha_status                  date          not null,
   vivienda_id                   number(10,0)  not null,
   status_vivienda_id            number(10,0)  not null,
@@ -194,7 +193,7 @@ create table mensualidad(
 
 prompt Creando tabla TARJETA_CREDITO
 create table tarjeta_credito(
-  tarjeta_credito_id   number(10,0)     default seq_tarjeta_credito.nextval,
+  tarjeta_credito_id   number(10,0)     not null,
   num_tarjeta          number(16,0)     not null,
   mes_expiracion       number(2,0)      not null,
   anio_expiracion      number(4,0)      not null,

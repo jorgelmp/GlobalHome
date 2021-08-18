@@ -12,7 +12,7 @@ create table vivienda_vacacional_ext(
 ) 
 organization external (
   type oracle_loader
-  default directory proy_dir
+  default directory ext_dir
   access parameters (
     records delimited by newline
     badfile tmp_dir:'vivienda_vacacional_ext_bad.log'
@@ -21,7 +21,7 @@ organization external (
     lrtrim
     missing field values are null
       (
-        vivienda_id, latitud, longitud, costo_dia, deposito
+        vivienda_id, latitud, longitud, costo_dia, deposito,
         fecha_alquiler date mask "dd/mm/yyyy"
       )
   )
