@@ -345,12 +345,12 @@ values (seq_mensaje.nextval, 'Cuándo nos vemos?', 'Buenas buenas, si quiere
 Prompt 32 Alterar
 update mensaje
 set respuesta_id = seq_mensaje.currval
-where mensaje_id = seq_mensaje.currval - 1
+where mensaje_id = 2
 ;
 
 Prompt 33
 insert into vivienda_en_venta (vivienda_id, num_catastral, folio, avaluo)
-values (seq_vivienda.currval, 1178654902156712, '5561901273953760AG',
+values (seq_vivienda.currval,1178654902156712, '5561901273953760AG',
   empty_blob()
 )
 ;
@@ -358,8 +358,8 @@ values (seq_vivienda.currval, 1178654902156712, '5561901273953760AG',
 Prompt 34
 insert into venta_usuario (venta_usuario_id, comision, clabe, vivienda_id,
   usuario_id)
-values (seq_venta_usuario.nextval, 40000, 781029469281125561, seq_vivienda.currval,
-  4
+values (seq_venta_usuario.nextval, 40000, 781029469281125561, 
+  seq_vivienda.currval, 4
 )
 ;
 

@@ -140,7 +140,7 @@ create table vivienda_vacacional(
 prompt Creando tabla VIVIENDA_EN_VENTA
 create table vivienda_en_venta(
   vivienda_id        number(10,0) constraint vivienda_en_venta_pk primary key,
-  num_catastral      number(10,0) not null,
+  num_catastral      number(16,0) not null,
   folio              varchar2(18) not null,
   avaluo             blob         not null
 )
