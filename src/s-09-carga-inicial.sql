@@ -510,7 +510,7 @@ values (seq_vivienda.currval, 400, 12, 400)
 Prompt 54
 insert into alquiler (alquiler_id, folio, periodo, vivienda_id, usuario_id,
   tarjeta_credito_id)
-values (seq_alquiler, '5612897C', 7, seq_vivienda.currval, 6, 2
+values (seq_alquiler.nextval, '5612897C', 7, seq_vivienda.currval, 6, 2
 )
 ;
 
