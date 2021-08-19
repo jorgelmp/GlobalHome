@@ -1,7 +1,9 @@
 --@Autor(es):       Jorge Rodríguez
 --@Fecha creación:  
 --@Descripción:     Script validacion proyecto final
+
 set serveroutput on
+
 declare
     v_num_tablas number(10,0);
     v_num_total_tablas number(10,0);
@@ -22,7 +24,7 @@ declare
     v_num_index_function_based number(10,0):=0;
     v_num_index_lob number(10,0):=0;
 
-    v_nombre_tabla varchar2(30);
+    v_nombre_tabla varchar2(128);
     v_num_registros number(10,0);
     v_tipo_constraint varchar2(1);
     v_num_constraints number(10,0);
@@ -35,7 +37,7 @@ declare
     v_num_triggers number(10,0):=0;
     v_num_functions number(10,0):=0;
     v_num_invalid number(10,0):=0;
-    v_username varchar2(30);
+    v_username varchar2(128);
     v_created date;
 
     cursor cur_tablas IS select table_name from user_tables;
