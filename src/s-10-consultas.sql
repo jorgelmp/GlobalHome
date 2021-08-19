@@ -49,12 +49,6 @@ and vr.vivienda_id = c.vivienda_id(+)
 and c.usuario_id = c2.usuario_id(+)
 ;
 
-select v.vivienda_id, s.nombre
-from vivienda_servicio v
-join servicio s
-on s.servicio_id = v.servicio_id
-;
-
 Prompt Consultar todas las casas que tienen televisión satelital pero no internet
 
 select v.vivienda_id, v.direccion, v.capacidad_max
@@ -64,9 +58,7 @@ on vs.vivienda_id = v.vivienda_id
 join servicio s
 on vs.servicio_id = s.servicio_id
 where s.nombre = 'Electricidad'
-
 minus
-
 select v.vivienda_id, v.direccion, v.capacidad_max
 from vivienda v
 join vivienda_servicio vs
@@ -76,8 +68,14 @@ on vs.servicio_id = s.servicio_id
 where s.nombre = 'Internet'
 ;
 
-prompt Desplegando todos los datos de las tablas disponibles para vacacionar
-select * from v_vivienda_vacacional;
+Prompt Consultar los costos de las casas vacacionales y el precio promedio
+select v.vivienda_id, v.direccion, vv.costo_dia, (
+  select avg(costo_dia)
+  from vivienda_vacacional
+) as costo_promedio
+from vivienda v, vivienda_vacacional vv
+where v.vivienda_id = vv.vivienda_id
+;
 
 prompt Consulta para la tabla externa
 select * from vivienda_vacacional_ext;
@@ -85,13 +83,26 @@ select * from vivienda_vacacional_ext;
 prompt Consulta para la tabla temporal
 select * from vivienda_carrito_vacaciones_temp;
 
+prompt Desplegando todos los datos de las vistas
+select * from v_vivienda_vacacional;
+
+select * from v_vivienda_renta;
+
+select * from v_vivienda_venta;
+
+select * from v_usuario;
+
+prompt desplegando todos los datos con sinónimos
+select * from foto;
 
 
+connect ms_proy_invitado /proyecto
 
+select * from venta;
 
+select * from renta;
 
+select * from vacacional;
 
-
-
-
+disconnect;
 
