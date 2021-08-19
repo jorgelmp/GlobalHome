@@ -160,6 +160,22 @@ values (seq_usuario.nextval, '_RiverCarJon@gmail.com', 'RioCardJo', 'Jonathan',
 )
 ;
 
+Prompt 8.6
+insert into usuario (usuario_id, email, nombre_usuario, nombre, ap_paterno,
+  ap_materno, contrasenia)
+values (seq_usuario.nextval, 'CPGalindo3@hotmail.com', 'CPeGal3', 'Christian',
+  'Pérez', 'Galindo', 'ContraCasa33'
+)
+;
+
+Prompt 8.7
+insert into usuario (usuario_id, email, nombre_usuario, nombre, ap_paterno,
+  ap_materno, contrasenia)
+values (seq_usuario.nextval, 'JudyBarreiro@outlook.com', 'JudyBarr09', 'Judith',
+  'Barreiro', 'Suárez', '1979JBS1979'
+)
+;
+
 Prompt 9
 insert into vivienda (vivienda_id, es_renta, es_vacional, es_venta, direccion,
   latitud, longitud, capacidad_max, descripcion, status_vivienda_id, usuario_id)
@@ -529,5 +545,85 @@ insert into vacacional_notificacion (vacacional_notificacion_id, num_celular,
   notificacion_enviada, vivienda_id, usuario_id)
 values (seq_vacacional_notificacion.nextval, 5566971413, 1, 
   seq_vivienda.currval, 6
+)
+;
+
+-- Tercer registro
+
+Prompt 57
+insert into vivienda (vivienda_id, es_renta, es_vacional, es_venta, direccion,
+  latitud, longitud, capacidad_max, descripcion, status_vivienda_id, usuario_id)
+values (seq_vivienda.nextval, 1, 1, 0,
+  'Insurgentes Sur #3493, Col. Villa Olímpica, CDMX, México', '24.811°N',
+    '103.111°W', 5, 'Departamento amueblado con vistas al centro arqueológico
+    Cuicuilco y a diez minutos de Six Flags. Cerca de la plaza comercial Perisur
+    y del hospital de neurología. Cuatro habitaciones, tres baños y una cocina.',
+    1, 7
+)
+;
+
+Prompt 58
+insert into historico_status_vivienda (historico_status_vivienda_id,
+  fecha_status, vivienda_id, status_vivienda_id)
+values (seq_historico_status_vivienda.nextval, to_date('30/07/2021', 'dd/mm/yyyy'),
+  seq_vivienda.currval, 1
+)
+;
+
+Prompt 59
+insert into imagen (num_foto, vivienda_id, foto)
+values (1, seq_vivienda.currval, empty_blob()
+)
+;
+
+Prompt 60
+insert into imagen (num_foto, vivienda_id, foto)
+values (2, seq_vivienda.currval, empty_blob()
+)
+;
+
+Prompt 61
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 1,
+  seq_vivienda.currval
+)
+;
+
+Prompt 62
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 2,
+  seq_vivienda.currval
+)
+;
+
+Prompt 63
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 3,
+  seq_vivienda.currval
+)
+;
+
+Prompt 64
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 4,
+  seq_vivienda.currval
+)
+;
+
+Prompt 65
+insert into vivienda_servicio (vivienda_servicio_id, servicio_id, vivienda_id)
+values (seq_vivienda_servicio.nextval, 5,
+  seq_vivienda.currval
+)
+;
+
+Prompt 66
+insert into mensaje (mensaje_id, titulo, cuerpo, leido, usuario_id,
+  respuesta_id, vivienda_id)
+values (seq_mensaje.nextval, 'Somos vecinos', 'Hola!!! Acabo de mudarme a 
+  Villa Olímpica, justo lo busqué en esta página, pero el de usted solo era
+  para renta :(. Cuando quiera podemos salir a caminar con los perros (escucho 
+  al suyo cuando ladra). Bueno ya no le robo más su tiempo, envíeme un mensaje
+  de vuelta :D', 1, 8, null, 4
 )
 ;
