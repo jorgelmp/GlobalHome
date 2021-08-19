@@ -23,6 +23,7 @@ whenever sqlerror exit rollback;
 @@intl/s-09-alquiler.sql
 @@intl/s-09-vacacional-notificacion.sql
 @@intl/s-09-vacacional-calificacion.sql
+--@@intl/s-09-temporal.sql
 
 commit;
 

@@ -12,5 +12,5 @@ connect ms_proy_admin /proyecto;
 @@src/s-07-sinonimos.sql
 @@src/s-08-vistas.sql
 @@src/s-09-carga-inicial.sql
-
+--@@src/s-10-consultas.sql
 

@@ -9,7 +9,7 @@ prompt Creando tabla temporal global
 create global temporary table vivienda_carrito_vacaciones_temp(
   usuario_id    number(10,0),
   vivienda_id   number(10,0),
-  direccion     varchar2(50),
+  direccion     varchar2(80),
   capacidad_max number(3,0),
   costo_dia     number(5,0),
   dias_max      number(3,0),

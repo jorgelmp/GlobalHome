@@ -2,6 +2,8 @@
 --@Fecha de creación: 16/08/2021
 --@Descripción: Consultas
 
+whenever sqlerror exit rollback;
+
 set linesize window
 
 Prompt Consulta para conocer la mensualidad más cara que se ha pagado.
