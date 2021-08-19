@@ -4,7 +4,7 @@
 
 --DEFINIR EXT_DIR COMO '/tmp/externa' EN UN SCRIPT DE CONTROL,
 --EJECURAR '!mkdir /tmp/externa' EN EL SCRIPT DE CONTROL.
---COPIAR 'cp externa/vivienda_vacacional_ext.sql /tmp/externa'
+--COPIAR 'cp externa/vivienda_vacacional_ext.csv /tmp/externa'
 
 create table vivienda_vacacional_ext(
   vivienda_id      number(10,0),

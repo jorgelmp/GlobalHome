@@ -2,7 +2,7 @@
 --@Fecha de creación: 16/08/2021
 --@Descripción: Script de control
 
---@@src/s-01-usuarios.sql
+@@src/s-01-usuarios.sql
 connect ms_proy_admin /proyecto;
 @@src/s-02-entidades.sql
 @@src/s-03-tablas-temporales.sql
