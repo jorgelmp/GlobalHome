@@ -51,7 +51,7 @@ and vr.vivienda_id = c.vivienda_id(+)
 and c.usuario_id = c2.usuario_id(+)
 ;
 
-Prompt Consultar todas las casas que tienen televisión satelital pero no internet
+Prompt Consultar todas las casas que tienen televisión satelital, pero no internet
 
 select v.vivienda_id, v.direccion, v.capacidad_max
 from vivienda v
@@ -77,6 +77,16 @@ select v.vivienda_id, v.direccion, vv.costo_dia, (
 ) as costo_promedio
 from vivienda v, vivienda_vacacional vv
 where v.vivienda_id = vv.vivienda_id
+;
+
+Prompt Consultar cuáles viviendas han tenido más de un estado
+select h.*
+from historico_status_vivienda h, (
+  select vivienda_id, count(*) cantidad_estados
+  from historico_status_vivienda
+  group by vivienda_id) q1
+where q1.vivienda_id = h.vivienda_id
+and q1.cantidad_estados > 1
 ;
 
 prompt Consulta para la tabla externa
