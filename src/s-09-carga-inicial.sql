@@ -477,4 +477,3 @@ values (seq_vivienda_servicio.nextval, 6,
 ;
 
 
-
