@@ -102,7 +102,7 @@ order
 ;
 
 prompt Creando secuencia para vacacional_notificacion_id
-create sequence seq_vacacional_notificacion_id
+create sequence seq_vacacional_notificacion
 start with 1
 increment by 1
 nomaxvalue

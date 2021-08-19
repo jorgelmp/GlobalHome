@@ -476,4 +476,58 @@ values (seq_vivienda_servicio.nextval, 6,
 )
 ;
 
+Prompt 50
+insert into mensaje (mensaje_id, titulo, cuerpo, leido, usuario_id,
+  respuesta_id, vivienda_id)
+values (seq_mensaje.nextval, 'Interés en su vivienda', 'Saludos! Mi pareja, un
+  par de amigos y yo estamos interesados en pasar unos días en su casa durante
+  el invierno. Nos podría dar información más detallada por favor. Gracias!',
+  1, 6, null, 3
+)
+;
 
+Prompt 51
+insert into mensaje (mensaje_id, titulo, cuerpo, leido, usuario_id,
+  respuesta_id, vivienda_id)
+values (seq_mensaje.nextval, 'Informes', 'Hola, qué tal? Claro que sí!
+  La casa también cuenta con una pequeña piscina, aunque probablemente
+  en invierno no quiera usarla tanto jejeje. Está recién pintada, si gusta
+  más detalles le puedo pasar mi número de teléfono.', 0, 5, null, 3
+)
+;
+
+Prompt 52 Alterar
+update mensaje
+set respuesta_id = seq_mensaje.currval
+where mensaje_id = 4
+;
+
+Prompt 53
+insert into vivienda_vacacional (vivienda_id, costo_dia, dias_max, deposito)
+values (seq_vivienda.currval, 400, 12, 400)
+;
+
+Prompt 54
+insert into alquiler (alquiler_id, folio, periodo, vivienda_id, usuario_id,
+  tarjeta_credito_id)
+values (seq_alquiler, '5612897C', 7, seq_vivienda.currval, 6, 2
+)
+;
+
+Prompt 55
+insert into vacacional_calificacion (vacacional_calificacion_id, calificacion,
+  descripcion, fecha, vivienda_id, usuario_id)
+values (seq_vacacional_calificacion.nextval, 4, 'La casa es muy bonita, pero
+  durante nuestra estancia se cayó un árbol cercano a la propiedad y nos
+  asustó mucho. Deberían podar esos árboles.', to_date('27/12/2021', 'dd/mm/yyyy'),
+  seq_vivienda.currval, 6
+)
+;
+
+Prompt 56
+insert into vacacional_notificacion (vacacional_notificacion_id, num_celular,
+  notificacion_enviada, vivienda_id, usuario_id)
+values (seq_vacacional_notificacion.nextval, 5566971413, 1, 
+  seq_vivienda.currval, 6
+)
+;
