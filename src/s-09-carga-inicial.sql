@@ -382,7 +382,7 @@ values (seq_venta_usuario.nextval, 40000, 781029469281125561,
 Prompt 35
 insert into mensualidad (mensualidad_id, fecha_pago, importe, archivo,
   venta_usuario_id)
-values (seq_mensualidad.nextval, to_date('18/06/2021', 'dd/mm/yyyy'), 50000,
+values (seq_mensualidad.nextval, to_date('18/05/2021', 'dd/mm/yyyy'), 5000,
   empty_blob(), seq_venta_usuario.currval
 )
 ;
@@ -390,15 +390,23 @@ values (seq_mensualidad.nextval, to_date('18/06/2021', 'dd/mm/yyyy'), 50000,
 Prompt 36
 insert into mensualidad (mensualidad_id, fecha_pago, importe, archivo,
   venta_usuario_id)
-values (seq_mensualidad.nextval, to_date('18/07/2021', 'dd/mm/yyyy'), 40000,
+values (seq_mensualidad.nextval, to_date('18/06/2021', 'dd/mm/yyyy'), 4000,
   empty_blob(), seq_venta_usuario.currval
 )
 ;
 
 Prompt 37
+insert into mensualidad (mensualidad_id, fecha_pago, importe, archivo,
+  venta_usuario_id)
+values (seq_mensualidad.nextval,to_date('18/07/2021', 'dd/mm/yyyy') ,5000, 
+  empty_blob(), seq_venta_usuario.currval
+)
+;
+
+Prompt 37.5
 insert into mensualidad (mensualidad_id, importe, archivo,
   venta_usuario_id)
-values (seq_mensualidad.nextval, 50000, empty_blob(), seq_venta_usuario.currval
+values (seq_mensualidad.nextval, 6000, empty_blob(), seq_venta_usuario.currval
 )
 ;
 
@@ -561,6 +569,25 @@ values (seq_vivienda.nextval, 1, 1, 0,
     1, 7
 )
 ;
+
+Prompt 57.1
+insert into vivienda_vacacional (vivienda_id, costo_dia, dias_max, deposito)
+values (seq_vivienda.currval, 700, 5, 1400)
+;
+
+Prompt 57.2
+insert into vivienda_en_renta (vivienda_id,renta_mensual, dia_deposito)
+values (seq_vivienda.currval,20000, 7)
+;
+
+Prompt 57.3
+insert into clabe_vivienda (clabe_vivienda_id, vivienda_id, clabe)
+values (seq_clabe_vivienda.nextval, seq_vivienda.currval, 
+  330981591826564278
+)
+;
+--CREAR REGISTRO EN SUBTIPOS: VACACIONAL Y RENTA
+
 
 Prompt 58
 insert into historico_status_vivienda (historico_status_vivienda_id,
