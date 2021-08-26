@@ -26,10 +26,10 @@ prompt Asignando roles
 grant rol_admin to ms_proy_admin;
 grant rol_invitado to ms_proy_invitado;
 
-create or replace directory ext_dir as '/tmp/proyecto';
-!mkdir /tmp/proyecto/
-!chmod 777 /tmp/proyecto
-!cp externa/vivienda_vacacional_ext.csv /tmp/proyecto/
+create or replace directory ext_dir as '/usr/share/appdata/oracle-external/';
+!sudo mkdir -p /usr/share/appdata/oracle-external/
+!sudo chown oracle:oinstall /usr/share/appdata/oracle-external/
+!sudo cp externa/vivienda_vacacional_ext.csv /usr/share/appdata/oracle-external/
 grant read, write on directory ext_dir to ms_proy_admin;
 
 prompt Listo!
